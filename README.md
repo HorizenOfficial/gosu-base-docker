@@ -1,2 +1,2 @@
 # gosu-base-docker
-Xenial docker baseimge with gosu installed
+Xenial docker baseimage with gosu installed
