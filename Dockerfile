@@ -11,7 +11,7 @@ RUN apt-get update \
     && curl -o /usr/local/bin/gosu -SL "$latestBaseurl/gosu-$dpkgArch" \
     && curl -o /usr/local/bin/gosu.asc -SL "$latestBaseurl/gosu-$dpkgArch.asc" \
     && export GNUPGHOME="$(mktemp -d)" \
-    && gpg --keyserver hkps://hkps.pool.sks-keyservers.net --recv-keys B42F6819007F00F88E364FD4036A9C25BF357DD4 \
+    && gpg --keyserver hkp://p80.pool.sks-keyservers.net:80 --recv-keys B42F6819007F00F88E364FD4036A9C25BF357DD4 \
     && gpg --batch --verify /usr/local/bin/gosu.asc /usr/local/bin/gosu \
     && rm -r "$GNUPGHOME" /usr/local/bin/gosu.asc \
     && chmod +x /usr/local/bin/gosu \
