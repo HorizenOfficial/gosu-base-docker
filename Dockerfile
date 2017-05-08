@@ -10,7 +10,7 @@ RUN apt-get update \
     && dpkgArch="$(dpkg --print-architecture | awk -F- '{ print $NF }')" \
     && curl -o /usr/local/bin/gosu -SL "$latestBaseurl/gosu-$dpkgArch" \
     && curl -o /usr/local/bin/gosu.asc -SL "$latestBaseurl/gosu-$dpkgArch.asc" \
-    $$ export GNUPGHOME="$(mktemp -d)" \
+    && export GNUPGHOME="$(mktemp -d)" \
     && gpg --keyserver ha.pool.sks-keyservers.net --recv-keys B42F6819007F00F88E364FD4036A9C25BF357DD4 \
     && gpg --batch --verify /usr/local/bin/gosu.asc /usr/local/bin/gosu \
     && rm -r "$GNUPGHOME" /usr/local/bin/gosu.asc \
