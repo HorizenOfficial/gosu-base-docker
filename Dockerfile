@@ -2,10 +2,8 @@ FROM ubuntu:16.04
 
 MAINTAINER cronicc@protonmail.com
 
-ENV DEBIAN_FRONTEND=noninteractive 
-
-RUN apt-get update \ 
-    && apt-get -y --no-install-recommends install ca-certificates curl \
+RUN apt-get update \
+    && DEBIAN_FRONTEND=noninteractive apt-get -y --no-install-recommends install ca-certificates curl \
     && latestBaseurl="$(curl -s https://api.github.com/repos/tianon/gosu/releases | grep browser_download_url | head -n 1 | cut -d '"' -f 4 | sed 's:/[^/]*$::')" \
     && dpkgArch="$(dpkg --print-architecture | awk -F- '{ print $NF }')" \
     && curl -o /usr/local/bin/gosu -SL "$latestBaseurl/gosu-$dpkgArch" \
