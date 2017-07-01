@@ -4,10 +4,11 @@ MAINTAINER cronicc@protonmail.com
 
 RUN apt-get update \
     && DEBIAN_FRONTEND=noninteractive apt-get -y --no-install-recommends install ca-certificates curl \
-    && latestBaseurl="$(curl -s https://api.github.com/repos/tianon/gosu/releases | grep browser_download_url | head -n 1 | cut -d '"' -f 4 | sed 's:/[^/]*$::')" \
+    && Baseurl="https://github.com/tianon/gosu/releases/download/" \
+    && GOSU_VERSION="1.10" \
     && dpkgArch="$(dpkg --print-architecture | awk -F- '{ print $NF }')" \
-    && curl -o /usr/local/bin/gosu -SL "$latestBaseurl/gosu-$dpkgArch" \
-    && curl -o /usr/local/bin/gosu.asc -SL "$latestBaseurl/gosu-$dpkgArch.asc" \
+    && curl -o /usr/local/bin/gosu -SL "$Baseurl/$GOSU_VERSION/gosu-$dpkgArch" \
+    && curl -o /usr/local/bin/gosu.asc -SL "$Baseurl/$GOSU_VERSION/gosu-$dpkgArch.asc" \
     && export GNUPGHOME="$(mktemp -d)" \
     && gpg --keyserver hkp://p80.pool.sks-keyservers.net:80 --recv-keys B42F6819007F00F88E364FD4036A9C25BF357DD4 \
     && gpg --batch --verify /usr/local/bin/gosu.asc /usr/local/bin/gosu \
