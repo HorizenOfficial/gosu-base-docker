@@ -14,7 +14,7 @@ RUN apt-get update \
     && rm -r "$GNUPGHOME" /usr/local/bin/gosu.asc \
     && chmod +x /usr/local/bin/gosu \
     && gosu nobody true \
-    && apt-get purge -y --auto-remove ca-certificates curl \
+    && DEBIAN_FRONTEND=noninteractive apt-get purge -y --auto-remove ca-certificates curl \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
