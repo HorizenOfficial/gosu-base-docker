@@ -5,7 +5,7 @@ MAINTAINER cronicc@protonmail.com
 RUN apt-get update \
     && DEBIAN_FRONTEND=noninteractive apt-get -y --no-install-recommends install ca-certificates curl \
     && Baseurl="https://github.com/tianon/gosu/releases/download/" \
-    && GOSU_VERSION="1.11" \
+    && GOSU_VERSION="1.12" \
     && dpkgArch="$(dpkg --print-architecture | awk -F- '{ print $NF }')" \
     && curl -o /usr/local/bin/gosu -SL "$Baseurl/$GOSU_VERSION/gosu-$dpkgArch" \
     && curl -o /usr/local/bin/gosu.asc -SL "$Baseurl/$GOSU_VERSION/gosu-$dpkgArch.asc" \
