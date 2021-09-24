@@ -1,10 +1,10 @@
-FROM ubuntu:20.04
+FROM ubuntu:18.04
 
 MAINTAINER cronic@horizen.io
 
 COPY entrypoint.sh /usr/local/bin/entrypoint.sh
 
-ENV GOSU_VERSION 1.12
+ENV GOSU_VERSION 1.14
 
 RUN set -eux; \
 # save list of currently installed packages for later so we can clean up
