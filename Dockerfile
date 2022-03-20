@@ -10,7 +10,7 @@ RUN set -eux; \
 # save list of currently installed packages for later so we can clean up
   apt-get update; \
   DEBIAN_FRONTEND=noninteractive apt-get dist-upgrade -y; \
-  DEBIAN_FRONTEND=noninteractive apt-get install apt-utils; \
+  DEBIAN_FRONTEND=noninteractive apt-get install -y apt-utils; \
   savedAptMark="$(apt-mark showmanual)"; \
   apt-get update; \
   DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends ca-certificates wget; \
