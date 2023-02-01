@@ -4,7 +4,7 @@ MAINTAINER cronic@horizen.io
 
 COPY entrypoint.sh /usr/local/bin/entrypoint.sh
 
-ENV GOSU_VERSION 1.14
+ENV GOSU_VERSION 1.16
 
 RUN set -eux; \
 # save list of currently installed packages for later so we can clean up
